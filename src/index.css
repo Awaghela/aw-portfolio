@@ -1,0 +1,229 @@
+/* ============================================================
+   Palette — "Ivory & Plum" (your original identity)
+   Core:  ivory #F8F4F0 · plum #7A3B6E · deep plum #5C2952 · ink #2B2230
+          lavender #F0E2EC · mauve (darkened for contrast) · white
+   Accents, each with ONE job:
+     rose  #D9707E → education & people   (personal, warm)
+     sage  #DFEADD → skills & status      (light sage, always with ink text)
+     gold  #E0A83E → achievements          (GPA, seals, highlights)
+   ============================================================ */
+:root {
+  --ink: #2b2230;
+  --ink-2: #33293a;
+  --ink-3: #3d3245;
+  --paper: #f8f4f0;          /* warm ivory */
+  --paper-2: #f0e9e2;
+  --white: #ffffff;
+  --line: #e9dfe3;
+  --muted: #6b6070;          /* mauve #897E8A darkened → 5.4:1 on ivory (AA) */
+  --muted-dark: #b9afbb;     /* mauve on ink */
+
+  --plum: #7a3b6e;
+  --plum-deep: #5c2952;
+  --lavender: #f0e2ec;
+  --plum-band: #ecdbe7;      /* About band — light lavender-plum */
+  --plum-soft: #f0e2ec;      /* Contact band */
+  --plum-pill: #5c2952;      /* date pills */
+
+  --rose: #d9707e;  --rose-soft: #fbe2e5;  --rose-ink: #9c3f4d;
+  --sage: #dfeadd;  --sage-soft: #eef4ec;  --sage-ink: #2b2230;  /* no dark green: sage is #DFEADD, text on it is ink */
+  --gold: #e0a83e;  --gold-soft: #fbeed2;  --gold-ink: #85570a;
+
+  /* playful accents borrowed from the research edition */
+  --pink: #f0b3c2;       /* italic accents on dark */
+  --pink-soft: #f8dbe6;  /* selected states */
+  --orchid: #c77dae;     /* charts, stripes */
+  --terra: #b5654f;      /* paper stripes */
+  --blush: #f5e7e6;      /* research shelf */
+  --butter: #f6e7a8;     /* sticky notes */
+
+  /* coordinated pastel folders (one per section) */
+  --folder-pink: #f9e3e6;   /* About */
+  --folder-sage: #dfeadd;   /* Experience */
+  --folder-blue: #dce7f3;   /* Projects */
+  --folder-peach: #fce4d4;  /* Research */
+
+  /* folder papers (projects) — tints of the same family */
+  --f-sand: #e9d3a6;   /* gold tint */
+  --f-clay: #eeb3ba;   /* rose tint */
+  --f-sage: #dfeadd;   /* sage */
+  --f-butter: #f3dfb0; /* light gold */
+  --f-lilac: #dcc3d6;  /* plum tint */
+  --f-rose: #e9cdd9;   /* lavender deep */
+
+  --font-display: "Anton", "Impact", sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --shadow-paper: 0 1px 2px rgba(43,34,48,.08), 0 14px 32px -12px rgba(43,34,48,.32);
+  --shadow-lift: 0 2px 4px rgba(43,34,48,.1), 0 26px 54px -16px rgba(43,34,48,.45);
+
+  /* paper fibre texture for ivory surfaces */
+  --fibre: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035 .6' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .25 0 0 0 0 .33 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+
+  /* film grain */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  background-image: var(--fibre);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--plum); color: #fff; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--plum); outline-offset: 3px; border-radius: 4px;
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 600px) { .wrap { padding: 0 18px; } }
+
+section[id] { scroll-margin-top: 70px; }
+
+/* type helpers */
+.display { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; line-height: .88; letter-spacing: -0.005em; }
+.mono { font-family: var(--font-mono); }
+.hand { font-family: var(--font-hand); font-weight: 600; }
+.serif-i { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--plum); text-transform: none; letter-spacing: -0.02em; }
+.fibre { background-image: var(--fibre); }
+.label {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+}
+
+/* grain overlay for any section */
+.grain { position: relative; isolation: isolate; }
+.grain::after {
+  content: ""; position: absolute; inset: 0; background-image: var(--grain); opacity: .18; pointer-events: none; z-index: 0; mix-blend-mode: multiply;
+}
+.grain > * { position: relative; z-index: 1; }
+
+/* small mono pill buttons (copy etc.) */
+.pill-btn {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  border: 1px solid currentColor; border-radius: 20px; padding: 3px 10px; background: transparent; opacity: .75;
+  transition: opacity .2s ease, background .2s ease, color .2s ease;
+}
+.pill-btn:hover { opacity: 1; }
+
+/* reveal */
+.reveal-box { will-change: opacity, transform; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal-box { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- pastel folder sections ----------
+   ivory page, pastel folder panel, dark-ink outline + hard ink shadow,
+   a labelled tab on the top-left edge. Colour comes from --f. */
+.fsec { background-color: var(--paper); background-image: var(--fibre); padding: 120px 0 90px; color: var(--ink); }
+.wrap.fwrap {
+  position: relative; background-color: var(--f); background-image: var(--fibre);
+  border: 2.5px solid var(--ink); border-radius: 0 28px 28px 28px; box-shadow: 8px 8px 0 var(--ink);
+  padding: 64px 56px 70px; max-width: 1180px;
+}
+.wrap.fwrap::before {
+  content: attr(data-tab); position: absolute; left: -2.5px; top: -46px; height: 46px; width: var(--tabw, 220px); padding: 0 22px; box-sizing: border-box;
+  display: flex; align-items: center; gap: 10px; background: var(--f); border: 2.5px solid var(--ink); border-bottom: none;
+  border-radius: 16px 16px 0 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+}
+.wrap.fwrap::after {
+  content: ""; position: absolute; left: 0; top: -3px; width: calc(var(--tabw, 220px) - 5px); height: 6px; background: var(--f);
+}
+@media (max-width: 760px) {
+  .fsec { padding: 90px 0 60px; }
+  .wrap.fwrap { margin: 0 12px; padding: 40px 18px 46px; border-radius: 0 20px 20px 20px; box-shadow: 5px 5px 0 var(--ink); }
+  .wrap.fwrap::before { height: 40px; top: -40px; font-size: 11px; padding: 0 16px; width: calc(var(--tabw, 220px) - 24px); }
+  .wrap.fwrap::after { width: calc(var(--tabw, 220px) - 29px); }
+}
+
+/* ============================================================
+   Interior palette refresh (Home/Hero remains untouched)
+   One cohesive ivory + plum palette with distinct pastel papers.
+   ============================================================ */
+.about, .bsec, .proj, .research, .contact, .cs {
+  --paper: #f8f4f0;
+  --ink: #2b2230;
+  --muted: #6b6070;
+  --plum: #7a3b6e;
+  --plum-deep: #5c2952;
+  --lavender: #f0e2ec;
+  --pink: #d9707e;
+  --pink-soft: #f9e3e6;
+  --rose: #d9707e;
+  --rose-soft: #f9e3e6;
+  --rose-ink: #9c3f4d;
+  --sage: #dfeadd;
+  --sage-soft: #eef4ec;
+  --sage-ink: #2b2230;
+  --gold: #e0a83e;
+  --gold-soft: #fbeed2;
+  --gold-ink: #85570a;
+  --orchid: #a8679a;
+  --terra: #b5654f;
+  --butter: #f6e7a8;
+  --blush: #f5e7e6;
+  --folder-sage: #dfeadd;  /* Experience: sage */
+  --folder-blue: #dce7f3;  /* Projects: powder blue */
+  --folder-peach: #fce4d4; /* Publications: peach */
+}
+
+/* Personal/about remains softly lavender; the Hero's colors aren't changed. */
+.about { --plum-band: #f0e2ec; }
+
+
+/* ============================================================
+   v9 — request trace, hop labels, ⌘K palette, cursor
+   ============================================================ */
+.hop {
+  display: inline-flex; align-items: center; gap: 2px; font-size: 12px; background: #2b2230; color: #f8f4f0;
+  padding: 7px 13px; border-radius: 20px; white-space: nowrap; width: fit-content; margin-bottom: 14px;
+}
+.hop-m { color: #f0b3c2; font-weight: 500; margin-right: 4px; }
+.hop-meta { color: #b9afbb; }
+.hop-s { color: #dfeadd; }
+
+.trace { position: fixed; left: 22px; top: 18vh; bottom: 18vh; width: 18px; z-index: 90; }
+.trace-line { position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: repeating-linear-gradient(180deg, rgba(122,59,110,.35) 0 4px, transparent 4px 10px); border-radius: 2px; }
+.trace-fill { position: absolute; left: 0; top: 0; width: 2px; background: #7a3b6e; border-radius: 2px; transition: height .12s linear; }
+.trace ol { list-style: none; position: absolute; inset: 0; margin: 0; padding: 0; }
+.trace li { position: absolute; left: 0; transform: translateY(-50%); }
+.trace-node { position: relative; display: block; width: 18px; height: 18px; border-radius: 50%; background: #f8f4f0; border: 2px solid rgba(122,59,110,.45); transition: background .25s, border-color .25s, transform .25s cubic-bezier(.34,1.56,.64,1); }
+.trace-node.on { background: #7a3b6e; border-color: #2b2230; }
+.trace-node.here { transform: scale(1.25); box-shadow: 0 0 0 5px rgba(122,59,110,.18); }
+.trace-tip { position: absolute; left: 28px; top: 50%; transform: translate(-6px, -50%); opacity: 0; pointer-events: none; white-space: nowrap; font-size: 11px; background: #2b2230; color: #f8f4f0; padding: 5px 10px; border-radius: 14px; transition: opacity .2s, transform .2s; }
+.trace-node:hover .trace-tip, .trace-node:focus-visible .trace-tip { opacity: 1; transform: translate(0, -50%); }
+.trace-id { position: absolute; left: -2px; bottom: -34px; font-size: 9.5px; color: #897e8a; writing-mode: vertical-rl; transform: rotate(180deg); }
+@media (max-width: 1180px) { .trace { display: none; } }
+@media (max-width: 640px) { .hop { white-space: normal; flex-wrap: wrap; font-size: 11px; } .nav-k { display: none; } .pg.l.log .pg-h .mono { display: none; } }
+
+.cmdk-back { position: fixed; inset: 0; z-index: 300; background: rgba(43,34,48,.35); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: flex-start; padding: 14vh 16px 0; animation: cmdkIn .15s ease; }
+@keyframes cmdkIn { from { opacity: 0; } to { opacity: 1; } }
+.cmdk { width: min(620px, 100%); background: #fff; border: 2.5px solid #2b2230; border-radius: 18px; box-shadow: 8px 8px 0 #2b2230; overflow: hidden; }
+.cmdk-in { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid #e9dfe3; }
+.cmdk-in .mono { color: #7a3b6e; font-size: 18px; }
+.cmdk-in input { flex: 1; border: none; outline: none; font: inherit; font-family: var(--font-mono); font-size: 15px; color: #2b2230; background: transparent; }
+.cmdk-esc { font-size: 10.5px !important; color: #6b6070 !important; border: 1px solid #e9dfe3; border-radius: 6px; padding: 2px 7px; }
+.cmdk-list { list-style: none; margin: 0; padding: 8px; max-height: 52vh; overflow: auto; }
+.cmdk-list button { width: 100%; display: flex; justify-content: space-between; gap: 16px; align-items: center; text-align: left; background: none; border: none; padding: 12px 12px; border-radius: 10px; font-size: 14.5px; color: #2b2230; }
+.cmdk-list button .mono { font-size: 11px; color: #6b6070; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.cmdk-list button.on { background: #f9e3e6; }
+.cmdk-none { padding: 16px; color: #6b6070; font-size: 14px; }
+.cmdk-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 310; background: #2b2230; color: #f8f4f0; padding: 10px 16px; border-radius: 20px; font-size: 12px; }
+.nav-k { font-family: var(--font-mono); font-size: 11.5px; background: #2b2230; color: #f8f4f0; border: none; border-radius: 20px; padding: 7px 11px; margin-left: 4px; white-space: nowrap; }
+.nav-k:hover { background: #7a3b6e; }
+
+.cursor { position: fixed; left: 0; top: 0; z-index: 400; pointer-events: none; }
+.cursor-dot { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 50%; background: #7a3b6e; box-shadow: 0 0 0 3px rgba(248,244,240,.8); transition: transform .2s; }
+.cursor.has-label .cursor-dot { transform: scale(.6); }
+.cursor-label { position: absolute; left: 12px; top: 10px; font-size: 11px; background: #2b2230; color: #f8f4f0; padding: 6px 11px; border-radius: 16px; white-space: nowrap; }

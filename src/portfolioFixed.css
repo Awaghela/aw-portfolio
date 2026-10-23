@@ -1,0 +1,344 @@
+/* ============================================================
+   FIXED PORTFOLIO — HERO -> ABOUT -> NAVBAR
+   This file controls layout only. Folder colors, labeled tabs,
+   borders, texture and hard shadows stay in src/index.css.
+   ============================================================ */
+html.portfolio-fixed,
+body.portfolio-fixed {
+  height: 100%;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+.portfolio-shell {
+  position: fixed;
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.portfolio-hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.portfolio-hero .hero { min-height: 100dvh; height: 100dvh; }
+.portfolio-hero .hero-tabs { display: none !important; }
+.portfolio-entering .hero-inner,
+.portfolio-entering .hero-foot {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity .4s ease, transform .55s ease;
+}
+.portfolio-entering .badge-anchor {
+  animation: badgePortal .72s cubic-bezier(.21,.72,.15,1) forwards;
+}
+@keyframes badgePortal {
+  0% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+  45% { opacity: 1; transform: translate(-12vw, 12vh) scale(1.4) rotate(-9deg); filter: blur(0); }
+  100% { opacity: 0; transform: translate(-20vw, 24vh) scale(4.2) rotate(-13deg); filter: blur(10px); }
+}
+.portfolio-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  pointer-events: none;
+  background: #7a3b6e;
+  clip-path: circle(0% at 72% 42%);
+  animation: portalReveal .72s cubic-bezier(.42,0,.7,1) forwards;
+}
+@keyframes portalReveal {
+  0%, 36% { clip-path: circle(0% at 72% 42%); }
+  100% { clip-path: circle(155% at 72% 42%); }
+}
+
+.portfolio-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: var(--paper);
+  animation: portfolioPageIn .5s cubic-bezier(.21,.75,.25,1) both;
+}
+.portfolio-screen > section { min-height: 100%; }
+.portfolio-screen .fsec { padding-top: 120px; }
+@keyframes portfolioPageIn {
+  from { opacity: 0; transform: scale(.985) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ============================================================
+   ABOUT — CENTER THE WHOLE NOTEBOOK / COLLAGE
+   The photo and notes stay in their original relative positions.
+   ============================================================ */
+@media (min-width: 901px) and (min-height: 760px) {
+  .portfolio-screen[data-section="about"] { overflow-y: hidden; }
+  .portfolio-screen[data-section="about"] .about {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    padding: 86px 0 25px;
+  }
+  .portfolio-screen[data-section="about"] .about > .wrap {
+    width: 100%;
+    flex: 0 1 auto;
+  }
+}
+
+/* ============================================================
+   ONE CONSISTENT FRAME FOR EXPERIENCE / PROJECTS / RESEARCH
+
+   Same width, same height, same screen position. The outer
+   sage / powder-blue / peach folders are NOT restyled here.
+   Inner content uses the available space rather than extending
+   below the folder border.
+   ============================================================ */
+@media (min-width: 1100px) and (min-height: 780px) {
+  .portfolio-screen[data-section="experience"],
+  .portfolio-screen[data-section="projects"],
+  .portfolio-screen[data-section="research"] {
+    overflow-y: hidden;
+  }
+
+  .portfolio-screen[data-section="experience"] .bsec,
+  .portfolio-screen[data-section="projects"] .proj,
+  .portfolio-screen[data-section="research"] .rl-section {
+    box-sizing: border-box;
+    min-height: 0;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 102px 0 18px;
+  }
+
+  .portfolio-screen[data-section="experience"] .wrap.fwrap,
+  .portfolio-screen[data-section="projects"] .wrap.fwrap,
+  .portfolio-screen[data-section="research"] .wrap.fwrap {
+    box-sizing: border-box;
+    width: min(93vw, 1450px);
+    max-width: 1450px;
+    height: min(740px, calc(100dvh - 172px));
+    min-height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 21px 30px 20px;
+  }
+
+  /* EXPERIENCE — notebook stays entirely inside sage folder */
+  .portfolio-screen[data-section="experience"] .wrap.fwrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .portfolio-screen[data-section="experience"] .bsec-head {
+    flex: none;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .portfolio-screen[data-section="experience"] .bsec-title {
+    margin-top: 3px;
+    gap: 12px;
+  }
+  .portfolio-screen[data-section="experience"] .bsec-title .display {
+    font-size: clamp(48px, 4.9vw, 69px);
+  }
+  .portfolio-screen[data-section="experience"] .bsec-title .serif-i {
+    font-size: clamp(23px, 2.2vw, 30px);
+  }
+  .portfolio-screen[data-section="experience"] .wrap.fwrap > .reveal-box {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+  }
+  .portfolio-screen[data-section="experience"] .bnd {
+    box-sizing: border-box;
+    width: calc(100% - 122px);
+    height: 100%;
+    margin-right: 122px;
+    margin-left: 0;
+    padding: 12px;
+  }
+  .portfolio-screen[data-section="experience"] .spread {
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .portfolio-screen[data-section="experience"] .pg {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0; /* override Binder.tsx's default 630px */
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 22px 25px 20px 36px;
+  }
+  .portfolio-screen[data-section="experience"] .pg.l.log { padding-left: 27px; }
+  .portfolio-screen[data-section="experience"] .pg.r { padding-left: 33px; }
+  .portfolio-screen[data-section="experience"] .pg-h { margin-bottom: 10px; }
+  .portfolio-screen[data-section="experience"] .pg-h h3 { font-size: 25px; }
+  .portfolio-screen[data-section="experience"] .gl { gap: 4px; margin-top: 2px; }
+  .portfolio-screen[data-section="experience"] .pg.l.log .gl-i button { padding: 7px 9px; }
+  .portfolio-screen[data-section="experience"] .gl-msg { font-size: 13px; line-height: 1.3; }
+  .portfolio-screen[data-section="experience"] .gl-meta { font-size: 10px; }
+  .portfolio-screen[data-section="experience"] .xd-top { margin-bottom: 12px; }
+  .portfolio-screen[data-section="experience"] .xd-role { font-size: clamp(20px, 1.8vw, 25px); }
+  .portfolio-screen[data-section="experience"] .xd-b li { font-size: 12.5px; line-height: 1.48; }
+  .portfolio-screen[data-section="experience"] .cw { margin-top: 12px; }
+  .portfolio-screen[data-section="experience"] .cw li { padding-top: 6px; padding-bottom: 6px; font-size: 13px; }
+  .portfolio-screen[data-section="experience"] .cw li.label::before { content: none; }
+  .portfolio-screen[data-section="experience"] .sg { margin-bottom: 17px; }
+  .portfolio-screen[data-section="experience"] .tapes { gap: 7px 6px; }
+  .portfolio-screen[data-section="experience"] .tape-l { font-size: 10.5px; padding: 6px 10px 5px; letter-spacing: .08em; }
+
+  /* PROJECTS — vertical PRO / JEC / TS and cards, controls visible */
+  .portfolio-screen[data-section="projects"] .pj-grid {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    align-items: center;
+    gap: clamp(30px, 3.1vw, 52px);
+  }
+  .portfolio-screen[data-section="projects"] .pj-title {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 6px;
+    white-space: normal;
+    font-size: clamp(74px, 7.1vw, 106px);
+    line-height: .88;
+  }
+  .portfolio-screen[data-section="projects"] .pj-sub {
+    margin-top: 13px;
+    font-size: 14px;
+    max-width: 47ch;
+  }
+  .portfolio-screen[data-section="projects"] .pj-index { margin-top: 16px; }
+  .portfolio-screen[data-section="projects"] .pj-index button { padding-top: 7px; padding-bottom: 7px; }
+  .portfolio-screen[data-section="projects"] .pj-stage { min-width: 0; padding: 4px 14px 3px; }
+  .portfolio-screen[data-section="projects"] .pj-deck {
+    width: min(465px, 100%);
+    height: clamp(395px, calc(100dvh - 390px), 475px);
+  }
+  .portfolio-screen[data-section="projects"] .pc-band { padding: 12px 20px; }
+  .portfolio-screen[data-section="projects"] .pc-body {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 15px 21px 11px;
+  }
+  .portfolio-screen[data-section="projects"] .pc-title { font-size: 27px; margin-bottom: 7px; }
+  .portfolio-screen[data-section="projects"] .pc-desc { font-size: 13px; line-height: 1.45; }
+  .portfolio-screen[data-section="projects"] .pc-prob { margin-top: 10px; }
+  .portfolio-screen[data-section="projects"] .pc-metric { margin-top: 11px; font-size: 18px; padding: 7px 11px 9px; }
+  .portfolio-screen[data-section="projects"] .pc-foot { padding: 11px 19px 12px; }
+  .portfolio-screen[data-section="projects"] .pj-ctrl { position: relative; z-index: 25; margin-top: 16px; }
+  .portfolio-screen[data-section="projects"] .pj-hint { margin-top: 6px; }
+
+  /* RESEARCH — single concise observatory with animated diagrams */
+  .portfolio-screen[data-section="research"] .rl-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .portfolio-screen[data-section="research"] .rl-heading {
+    flex: none;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .portfolio-screen[data-section="research"] .rl-title { gap: 12px; margin-top: 5px; }
+  .portfolio-screen[data-section="research"] .rl-title .display { font-size: clamp(52px, 5vw, 72px); }
+  .portfolio-screen[data-section="research"] .rl-title .serif-i { font-size: clamp(30px, 3vw, 43px); }
+  .portfolio-screen[data-section="research"] .rl-console {
+    min-height: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .portfolio-screen[data-section="research"] .rl-console-bar { flex: 0 0 auto; }
+  .portfolio-screen[data-section="research"] .rl-main {
+    min-height: 0;
+    height: auto;
+    flex: 1 1 auto;
+    grid-template-columns: 42% minmax(0, 1fr);
+  }
+  .portfolio-screen[data-section="research"] .rl-visual { min-height: 0; }
+  .portfolio-screen[data-section="research"] .rl-paper {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .portfolio-screen[data-section="research"] .rl-selector { flex: 0 0 70px; min-height: 0; }
+  .portfolio-screen[data-section="research"] .rl-tab { padding: 8px 13px; }
+}
+
+/* ============================================================
+   SHORTER / SMALLER SCREENS: NEVER CLIP INFORMATION
+   Let the active screen itself scroll when the viewport cannot
+   contain the notebook, cards or Observatory at readable sizes.
+   Scrolling does not advance to another navbar tab.
+   ============================================================ */
+@media (max-width: 1099px), (max-height: 779px) {
+  .portfolio-screen[data-section="experience"],
+  .portfolio-screen[data-section="projects"],
+  .portfolio-screen[data-section="research"] { overflow-y: auto; }
+}
+@media (min-width: 901px) and (max-width: 1099px) {
+  .portfolio-screen[data-section="experience"] .wrap.fwrap,
+  .portfolio-screen[data-section="projects"] .wrap.fwrap,
+  .portfolio-screen[data-section="research"] .wrap.fwrap {
+    width: calc(100% - 32px);
+    max-width: none;
+  }
+}
+@media (max-width: 900px), (max-height: 759px) {
+  .portfolio-screen[data-section="about"] { overflow-y: auto; }
+  .portfolio-screen[data-section="about"] .about {
+    height: auto;
+    min-height: 100dvh;
+    padding-top: 106px;
+    padding-bottom: 80px;
+  }
+}
+@media (max-width: 760px) {
+  .portfolio-screen .fsec { padding-top: 105px; }
+  .portfolio-hero .hero { overflow-y: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-entering .badge-anchor,
+  .portfolio-portal,
+  .portfolio-screen { animation: none !important; }
+  .portfolio-entering .hero-inner,
+  .portfolio-entering .hero-foot { transition: none !important; }
+}
+
+/* Projects: arrows + counter centered, lower below cards */
+
+.portfolio-screen[data-section="projects"] .pj-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 38px;
+}
+
+.portfolio-screen[data-section="projects"] .pj-count {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.portfolio-screen[data-section="projects"] .pj-hint {
+  margin-top: 8px;
+}
