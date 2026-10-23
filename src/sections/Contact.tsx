@@ -102,7 +102,7 @@ export function Contact() {
               </a>
             )}
             <a
-                href="/resume.pdf"
+                href="/Aayushi_Waghela_Resume.pdf"
                 download="Aayushi_Waghela_Resume.pdf"
                 aria-label="Download my résumé"
                 className="c-icon"
