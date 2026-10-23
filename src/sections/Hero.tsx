@@ -118,9 +118,14 @@ export function Hero() {
       <div className="wrap hero-foot">
         <span className="mono">MS CS @ CU Boulder · ex-SDE Intern @ AWS · {basics.location}</span>
         <span className="hero-foot-right">
-          <a href="/resume.pdf" download className="mono hero-cv">
+          <a
+            href="/Aayushi_Waghela_Resume.pdf"
+            download="Aayushi_Waghela_Resume.pdf"
+            aria-label="Download my résumé"
+          >
             Résumé ↓
           </a>
+
           <a href="#about" className="mono hero-scroll">
             Scroll <span>↓</span>
           </a>
