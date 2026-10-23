@@ -59,5 +59,3 @@ Typography: Anton, Fraunces, IBM Plex Mono, Inter, and Caveat.
 Built for Vercel with SPA route rewrites in `vercel.json`.
 
 Add your résumé to `public/resume.pdf` before deployment.
-
----
