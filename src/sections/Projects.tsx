@@ -249,47 +249,102 @@ export function Projects() {
         .pj-count { font-size: 13px; color: var(--ink); letter-spacing: .1em; }
         .pj-hint { font-size: 11px; color: var(--muted); margin-top: 10px; }
 
-        /* Final GitHub card: applies on both desktop and mobile. */
+        /* Final GitHub card: desktop and mobile */
+
         .github-end-card {
           background: #F8F4F0;
           border: 2.5px solid #2B2230;
         }
-        .github-end-band { background: #7A3B6E; color: #FFFFFF; }
-        .github-end-body {
-          flex: 1; display: flex; flex-direction: column; align-items: center;
-          justify-content: center; text-align: center; padding: 28px 30px;
-          min-height: 0;
-        }
-        .github-end-icon {
-          width: 104px; height: 104px; border-radius: 50%;
-          background: #F0E2EC; color: #7A3B6E; display: grid;
-          place-items: center; margin-bottom: 26px;
-          transition: transform .3s ease;
-        }
-        .github-end-card:hover .github-end-icon { transform: rotate(-8deg) scale(1.05); }
-        .github-end-label { font-size: 10px; letter-spacing: .15em; color: #7A3B6E; }
-        .github-end-title {
-          font-family: var(--font-serif); font-size: clamp(38px, 4vw, 52px);
-          line-height: 1.1; font-weight: 600; margin: 14px 0;
-          letter-spacing: -.03em;
-        }
-        .github-end-title em { color: #7A3B6E; }
-        .github-end-desc {
-          font-size: 14px; line-height: 1.7; color: #6B6070;
-          max-width: 300px; margin-bottom: 28px;
-        }
-        .github-end-link {
-          display: inline-flex; align-items: center; justify-content: center;
-          gap: 10px; padding: 13px 23px; background: #7A3B6E;
-          color: #FFFFFF; border-radius: 30px; font-size: 14px;
-          font-weight: 700; transition: transform .2s ease, background .2s ease;
-        }
-        .github-end-link:hover { background: #5C2952; transform: translateY(-3px); }
-        .github-end-footer {
-          display: flex; justify-content: space-between; padding: 16px 24px;
-          border-top: 1px solid #E9DFE3; font-size: 11px; color: #6B6070;
+
+        .github-end-band {
+          background: #7A3B6E;
+          color: #FFFFFF;
         }
 
+        .github-end-body {
+          flex: 1;
+          min-height: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 16px 24px 10px;
+        }
+
+        .github-end-icon {
+          width: 78px;
+          height: 78px;
+          border-radius: 50%;
+          background: #F0E2EC;
+          color: #7A3B6E;
+          display: grid;
+          place-items: center;
+          margin-bottom: 12px;
+          flex-shrink: 0;
+          transition: transform .3s ease;
+        }
+
+        .github-end-card:hover .github-end-icon {
+          transform: rotate(-8deg) scale(1.05);
+        }
+
+        .github-end-label {
+          font-size: 10px;
+          letter-spacing: .15em;
+          color: #7A3B6E;
+        }
+
+        .github-end-title {
+          font-family: var(--font-serif);
+          font-size: clamp(34px, 3vw, 42px);
+          line-height: 1.1;
+          font-weight: 600;
+          margin: 8px 0;
+          letter-spacing: -.03em;
+        }
+
+        .github-end-title em {
+          color: #7A3B6E;
+        }
+
+        .github-end-desc {
+          font-size: 12px;
+          line-height: 1.5;
+          color: #6B6070;
+          max-width: 300px;
+          margin-bottom: 14px;
+        }
+
+        .github-end-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 10px 18px;
+          background: #7A3B6E;
+          color: #FFFFFF;
+          border-radius: 30px;
+          font-size: 13px;
+          font-weight: 700;
+          flex-shrink: 0;
+          transition: transform .2s ease, background .2s ease;
+        }
+
+        .github-end-link:hover {
+          background: #5C2952;
+          transform: translateY(-3px);
+        }
+
+        .github-end-footer {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 20px 12px;
+          border-top: none;
+          flex-shrink: 0;
+          font-size: 11px;
+          color: #6B6070;
+        }
         @media (max-width: 900px) {
           
           .pj-grid { grid-template-columns: minmax(0,1fr); gap: 36px; }

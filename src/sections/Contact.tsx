@@ -101,7 +101,12 @@ export function Contact() {
                 <span className="mono">GitHub</span>
               </a>
             )}
-            <a href="/resume.pdf" download className="c-icon">
+            <a
+                href="/resume.pdf"
+                download="Aayushi_Waghela_Resume.pdf"
+                aria-label="Download my résumé"
+                className="c-icon"
+              >
               <span className="c-sq">
                 <DownloadIcon size={16} />
               </span>
